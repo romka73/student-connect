@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student-Connect</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f5f9;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: #4e73df;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .chat-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    .chat-list li {
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+    }
+
+    .chat-list li:hover {
+      background: #f0f0f0;
+    }
+
+    .chat-list li.active {
+      background: #e6f0ff;
+      font-weight: bold;
+    }
+
+    .chat-icon {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #e6ecf3;
+    }
+
+    .chat-header {
+      padding: 1rem;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .chat-header-icon {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message {
+      max-width: 60%;
+      margin-bottom: 10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .message.self {
+      align-self: flex-end;
+      background: #4e73df;
+      color: white;
+    }
+
+    .message-sender {
+      font-weight: bold;
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+      color: #555;
+    }
+
+    .message.self .message-sender {
+      color: #e0e0e0;
+    }
+
+    .message-time {
+      font-size: 0.7rem;
+      color: #999;
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .message.self .message-time {
+      color: #d0d0d0;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 1rem;
+      background: #fff;
+      border-top: 1px solid #ccc;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+      margin-right: 10px;
+    }
+
+    .input-area button {
+      padding: 10px 16px;
+      border: none;
+      background: #4e73df;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f1f1f1;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .code-block {
+      background: #f5f5f5;
+      border-radius: 5px;
+      padding: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin: 5px 0;
+      overflow-x: auto;
+    }
+
+    .message.self .code-block {
+      background: rgba(0,0,0,0.2);
+    }
+
+    .empty-chat {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+    }
+
+    .empty-chat-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">💻 Student-Connect</div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="profile.html">Профиль</a>
+      <a href="settings.html">Настройки</a>
+    </nav>
+  </header>
+
+  <main>
+    <aside class="sidebar">
+      <h2>Чаты программистов</h2>
+      <ul class="chat-list">
+        <li class="active" data-chat="general">
+          <span class="chat-icon">💬</span> Общий чат
+        </li>
+        <li data-chat="csharp">
+          <span class="chat-icon">🔷</span> Группа: C#/.NET
+        </li>
+        <li data-chat="python">
+          <span class="chat-icon">🐍</span> Группа: Python
+        </li>
+        <li data-chat="web">
+          <span class="chat-icon">🌐</span> Группа: Web
+        </li>
+        <li data-chat="algo">
+          <span class="chat-icon">🧠</span> Группа: Алгоритмы
+        </li>
+      </ul>
+    </aside>
+
+    <section class="chat-area">
+      <div class="chat-header">
+        <span class="chat-header-icon" id="chatIcon">💬</span>
+        <span id="chatTitle">Общий чат</span>
+      </div>
+      
+      <div class="messages" id="messages">
+        <!-- Сообщения будут загружаться динамически -->
+      </div>
+
+      <div class="input-area">
+        <input type="text" id="messageInput" placeholder="Введите сообщение..." onkeypress="handleKeyPress(event)" />
+        <button onclick="sendMessage()">Отправить</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Student-Connect | Чат для программистов
+  </footer>
+
+  <script>
+    // Данные для разных чатов
+    const chatData = {
+      general: {
+        icon: "💬",
+        title: "Общий чат",
+        users: [
+          { name: "Алексей", role: "Python-разработчик" },
+          { name: "Мария", role: ".NET разработчик" },
+          { name: "Иван", role: "Frontend-разработчик" },
+          { name: "Дмитрий", role: "Алгоритмист" }
+        ],
+        messages: [
+          { sender: "Алексей", text: "Привет всем! Как дела?", self: false },
+          { sender: "Мария", text: "Привет! Всё отлично, только разбираюсь с новыми фичами в .NET 8", self: false },
+          { sender: "Вы", text: "Привет! Кто-нибудь хочет совместно поработать над open-source проектом?", self: true }
+        ]
+      },
+      csharp: {
+        icon: "🔷",
+        title: "Группа: C#/.NET",
+        users: [
+          { name: "Мария", role: "Senior .NET Developer" },
+          { name: "Сергей", role: "Unity Developer" },
+          { name: "Ольга", role: "ASP.NET Core Expert" }
+        ],
+        messages: [
+          { sender: "Мария", text: "Ребята, кто-нибудь пробовал новые записи (records) в C# 10?", self: false },
+          { sender: "Сергей", text: "Да, крутая фича! Особенно для DTO. Вот пример:\n<div class='code-block'>public record Person(string Name, int Age);</div>", self: false },
+          { sender: "Ольга", text: "А как у вас с производительностью Entity Framework Core? У меня проблемы с сложными запросами.", self: false }
+        ]
+      },
+      python: {
+        icon: "🐍",
+        title: "Группа: Python",
+        users: [
+          { name: "Алексей", role: "Data Scientist" },
+          { name: "Елена", role: "Django Developer" },
+          { name: "Артём", role: "Python Automation" }
+        ],
+        messages: [
+          { sender: "Алексей", text: "Кто-нибудь использует Pandas для больших датасетов? Как боретесь с потреблением памяти?", self: false },
+          { sender: "Елена", text: "Можно попробовать chunksize или dask вместо pandas", self: false },
+          { sender: "Артём", text: "Я использую такой подход:\n<div class='code-block'>for chunk in pd.read_csv('big.csv', chunksize=10000):\n    process(chunk)</div>", self: false }
+        ]
+      },
+      web: {
+        icon: "🌐",
+        title: "Группа: Web",
+        users: [
+          { name: "Иван", role: "React Specialist" },
+          { name: "Анна", role: "Vue.js Developer" },
+          { name: "Михаил", role: "CSS Guru" }
+        ],
+        messages: [
+          { sender: "Иван", text: "Что думаете о новом Next.js 14? Стоит переходить?", self: false },
+          { sender: "Анна", text: "Server Components выглядят перспективно, но пока есть баги", self: false },
+          { sender: "Михаил", text: "А кто-нибудь использует :has() в CSS? Это просто магия!\n<div class='code-block'>.card:has(.highlight) {\n  border: 2px solid gold;\n}</div>", self: false }
+        ]
+      },
+      algo: {
+        icon: "🧠",
+        title: "Группа: Алгоритмы",
+        users: [
+          { name: "Дмитрий", role: "Competitive Programmer" },
+          { name: "Софья", role: "Algorithm Expert" },
+          { name: "Павел", role: "Leetcode Master" }
+        ],
+        messages: [
+          { sender: "Дмитрий", text: "Как лучше всего решать задачи на динамическое программирование?", self: false },
+          { sender: "Софья", text: "Начинай с мемоизации, потом переходи к табличному подходу", self: false },
+          { sender: "Павел", text: "Вот мой шаблон для Домашнего задания:\n<div class='code-block'>dp = [0] * (n+1)\ndp[0] = base_case\nfor i in range(1, n+1):\n    dp[i] = dp[i-1] + ...</div>", self: false }
+        ]
+      }
+    };
+
+    let currentChat = 'general';
+    const users = [
+      { name: "Алексей", interests: ["Python", "Data Science"] },
+      { name: "Мария", interests: [".NET", "Backend"] },
+      { name: "Иван", interests: ["Frontend", "UI/UX"] },
+      { name: "Дмитрий", interests: ["Алгоритмы", "Структуры данных"] },
+      { name: "Елена", interests: ["JavaScript", "Node.js"] }
+    ];
+
+    // Инициализация чата
+    function initChat() {
+      loadChat(currentChat);
+      setupEventListeners();
+    }
+
+    // Загрузка чата
+    function loadChat(chatId) {
+      currentChat = chatId;
+      const chat = chatData[chatId];
+      
+      document.getElementById('chatIcon').textContent = chat.icon;
+      document.getElementById('chatTitle').textContent = chat.title;
+      
+      const messagesEl = document.getElementById('messages');
+      messagesEl.innerHTML = '';
+      
+      chat.messages.forEach(msg => {
+        addMessage(msg.text, msg.self, msg.sender);
+      });
+      
+      // Прокрутка вниз
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    // Добавление сообщения
+    function addMessage(text, isSelf, sender = "Вы") {
+      const messagesEl = document.getElementById("messages");
+      const messageEl = document.createElement("div");
+      messageEl.className = isSelf ? "message self" : "message";
+      
+      const now = new Date();
+      const timeStr = now.getHours() + ":" + (now.getMinutes() < 10 ? "0" : "") + now.getMinutes();
+      
+      messageEl.innerHTML = `
+        <div class="message-sender">${sender}</div>
+        ${text.replace(/\n/g, '<br>')}
+        <div class="message-time">${timeStr}</div>
+      `;
+      
+      messagesEl.appendChild(messageEl);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    // Отправка сообщения
+    function sendMessage() {
+      const input = document.getElementById("messageInput");
+      const text = input.value.trim();
+      if (text === "") return;
+
+      addMessage(text, true);
+      input.value = "";
+
+      // Автоматический ответ
+      setTimeout(() => {
+        const chat = chatData[currentChat];
+        const randomUser = chat.users[Math.floor(Math.random() * chat.users.length)];
+        
+        let replyText = generateReply(currentChat);
+        addMessage(replyText, false, randomUser.name);
+      }, 1000 + Math.random() * 3000);
+    }
+
+    // Генерация ответа в зависимости от чата
+    function generateReply(chatId) {
+      const replies = {
+        general: [
+          "Кто-нибудь идёт на конференцию DevDays?",
+          "Видели новый фреймворк от Microsoft?",
+          "Как вам новая версия Visual Studio Code?"
+        ],
+        csharp: [
+          "Попробуй использовать MemoryCache вместо Dictionary",
+          "В .NET 8 улучшили производительность LINQ",
+          "Используй var только когда тип очевиден",
+          "Лучшая практика - внедрение зависимостей\n<div class='code-block'>services.AddScoped<IMyService, MyService>();</div>"
+        ],
+        python: [
+          "Не забывай про virtualenv для изоляции зависимостей",
+          "Pydantic отлично подходит для валидации данных",
+          "В Python 3.11 ускорили выполнение кода на 25%",
+          "Для асинхронности используй:\n<div class='code-block'>async with aiohttp.ClientSession() as session:</div>"
+        ],
+        web: [
+          "Grid лучше подходит для двумерных раскладок",
+          "Не забывай про accessibility (a11y)",
+          "Оптимизируй изображения с помощью WebP",
+          "Пример хука в React:\n<div class='code-block'>const [state, setState] = useState(initialValue);</div>"
+        ],
+        algo: [
+          "Для графов попробуй алгоритм Дейкстры",
+          "Мемоизация ускоряет рекурсивные решения",
+          "Разделяй и властвуй работает для сортировки слиянием",
+          "Шаблон sliding window:\n<div class='code-block'>while (end < arr.length) {\n  sum += arr[end++];\n  while (sum >= target) {\n    min = Math.min(min, end-start);\n    sum -= arr[start++];\n  }\n}</div>"
+        ]
+      };
+      
+      const chatReplies = replies[chatId];
+      return chatReplies[Math.floor(Math.random() * chatReplies.length)];
+    }
+
+    // Обработчики событий
+    function setupEventListeners() {
+      // Переключение чатов
+      document.querySelectorAll('.chat-list li').forEach(item => {
+        item.addEventListener('click', function() {
+          document.querySelectorAll('.chat-list li').forEach(i => i.classList.remove('active'));
+          this.classList.add('active');
+          const chatId = this.getAttribute('data-chat');
+          loadChat(chatId);
+        });
+      });
+      
+      // Отправка по Enter
+      document.getElementById('messageInput').addEventListener('keypress', function(e) {
+        if (e.key === "Enter") {
+          sendMessage();
+        }
+      });
+    }
+
+    // Запуск приложения
+    window.onload = initChat;
+  </script>
+</body>
+</html>

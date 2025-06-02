@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right, #f0f4ff, #e5ecff);
+  color: #1a1a1a;
+}
+
+.settings-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.settings-header h1 {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.settings-header p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.settings-section {
+  margin-bottom: 40px;
+}
+
+.settings-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.setting-item {
+  margin-bottom: 20px;
+}
+
+.setting-item label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.setting-item input,
+.setting-item textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #f9f9f9;
+}
+
+.setting-switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.setting-switch input {
+  display: none;
+}
+
+.switch {
+  width: 48px;
+  height: 24px;
+  background: #ccc;
+  display: inline-block;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s ease;
+}
+
+input:checked + .switch {
+  background: #4f88ff;
+}
+
+input:checked + .switch::after {
+  left: 26px;
+}
+
+.settings-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.settings-btn.save {
+  background: #4f88ff;
+  color: white;
+}
+
+.settings-btn.save:hover {
+  background: #3c70d3;
+}
+
+.settings-btn.danger {
+  background: #ff5e5e;
+  color: white;
+  margin-right: 10px;
+}
+
+.settings-btn.danger:hover {
+  background: #d94141;
+}
+
+.settings-footer {
+  text-align: right;
+  margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+  .settings-container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .settings-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .settings-footer {
+    text-align: center;
+  }
+}

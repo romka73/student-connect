@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Курс по C#</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0; padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0078d7;
+            margin-bottom: 15px;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #0078d7;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #005fa3;
+        }
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        .back:hover {
+            text-decoration: underline;
+        }
+        .reviews {
+            margin-top: 30px;
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .review-item {
+            margin-bottom: 15px;
+        }
+        .review-item strong {
+            color: #0078d7;
+        }
+        .teacher {
+            margin-top: 30px;
+            padding: 15px;
+            border-left: 5px solid #0078d7;
+            background: #dbeeff;
+            border-radius: 5px;
+        }
+        .teacher h3 {
+            margin-top: 0;
+        }
+        .course-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            max-height: 300px;
+        }
+
+        .top-notification {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4caf50;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 0 0 10px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: top 0.5s ease-in-out;
+    z-index: 9999;
+}
+.top-notification.show {
+    top: 0;
+}
+
+    </style>
+</head>
+       <div id="top-notification" class="top-notification">Вы успешно записались на курс! Ожидайте обратной связи.</div>
+
+
+<body>
+
+    <div class="container">
+        <h1>Курс по C#</h1>
+        <p>
+            Изучение языка C# — современного, мощного и широко используемого языка программирования для разработки приложений на платформе .NET. 
+            Курс познакомит вас с основами синтаксиса, объектно-ориентированным программированием и созданием реальных приложений.
+        </p>
+
+        <h2>Программа курса:</h2>
+        <ul>
+            <li>Введение в C# и установка среды разработки</li>
+            <li>Основы синтаксиса и переменные</li>
+            <li>Условные операторы и циклы</li>
+            <li>Функции и методы</li>
+            <li>Классы и объекты</li>
+            <li>Наследование и полиморфизм</li>
+            <li>Работа с коллекциями и LINQ</li>
+            <li>Создание простых приложений и проектов</li>
+        </ul>
+
+       <a href="#" class="button" id="enrollButton">Записаться на курс</a>
+       <a href="courses.html" class="back">← Вернуться к списку курсов</a>
+
+        <div class="reviews">
+            <h2>Отзывы студентов:</h2>
+            <div class="review-item">
+                <strong>Алексей:</strong> "Курс помог глубоко понять ООП и основы C#. Отличный преподаватель!"
+            </div>
+        </div>
+
+        <div class="teacher">
+            <h3>Преподаватель:</h3>
+            <p>Дмитрий Иванов — опытный разработчик на C# с большим опытом работы в корпоративных проектах и преподавания.</p>
+        </div>
+    </div>
+     
+    <script>
+    document.getElementById('enrollButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        const notification = document.getElementById('top-notification');
+        notification.classList.add('show');
+
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 4000); // скрыть через 4 секунды
+    });
+</script>
+
+
+</body>
+</html>

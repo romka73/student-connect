@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student-Connect | Образовательная платформа</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo"><i class="fas fa-graduation-cap"></i>Student-Connect</a>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
+                    <li><a href="courses.html" data-i18n="nav.courses">Курсы</a></li>
+                    <li><a href="discussions.html" data-i18n="nav.discussions">Обсуждения</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">О нас</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Контакты</a></li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <div class="language-selector">
+                        <button class="language-btn">
+                            <i class="fas fa-globe"></i><span id="current-language">Рус</span>
+                        </button>
+                        <div class="language-dropdown">
+                            <div class="language-option" onclick="changeLanguage('ru')">
+                                <img src="https://flagcdn.com/w20/ru.png" alt="Русский" class="language-flag">
+                                <span>Русский</span>
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('kz')">
+                                <img src="https://flagcdn.com/w20/kz.png" alt="Қазақша" class="language-flag">
+                                <span>Қазақша</span>
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('en')">
+                                <img src="https://flagcdn.com/w20/gb.png" alt="English" class="language-flag">
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="login.html" class="btn" data-i18n="nav.login">Войти</a>
+                    <a href="register.html" class="btn" data-i18n="nav.register">Регистрация</a>
+                    <a href="profile.html" class="profile-icon" aria-label="Профиль">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-btn" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
+                    <li><a href="courses.html" data-i18n="nav.courses">Курсы</a></li>
+                    <li><a href="discussions.html" data-i18n="nav.discussions">Обсуждения</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">О нас</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Контакты</a></li>
+                </ul>
+                <div style="margin-top: 20px; padding: 0 10px;">
+                    <div class="language-selector" style="margin-bottom: 15px;">
+                        <button class="language-btn" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-globe"></i> <span id="mobile-current-language">Русский</span>
+                        </button>
+                        <div class="language-dropdown" style="width: 100%; left: 0;">
+                            <div class="language-option" onclick="changeLanguage('ru')">
+                                <img src="https://flagcdn.com/w20/ru.png" alt="Русский" class="language-flag">
+                                <span>Русский</span>
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('kz')">
+                                <img src="https://flagcdn.com/w20/kz.png" alt="Қазақша" class="language-flag">
+                                <span>Қазақша</span>
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('en')">
+                                <img src="https://flagcdn.com/w20/gb.png" alt="English" class="language-flag">
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="login.html" class="btn" style="display: block; margin-bottom: 10px;" data-i18n="nav.login">Войти</a>
+                    <a href="register.html" class="btn" style="display: block;" data-i18n="nav.register">Регистрация</a>
+                    <a href="profile.html" class="btn" style="display: block; margin-top: 10px;"><i class="fas fa-user-circle"></i> <span data-i18n="nav.profile">Профиль</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 data-i18n="hero.title">Добро пожаловать в Student-Connect</h1>
+            <p data-i18n="hero.subtitle">Образовательное сообщество для студентов, преподавателей и всех, кто стремится к знаниям. Учитесь, общайтесь и развивайтесь вместе с нами!</p>
+            <div class="hero-buttons">
+                <a href="register.html" class="btn" data-i18n="hero.start">Начать</a>
+                <a href="chat.html" class="btn btn-outline" data-i18n="hero.join_chat">Вступить в чат</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="features.title">Наши преимущества</h2>
+                <p data-i18n="features.subtitle">Платформа, созданная для вашего успеха в учёбе и карьере</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3 data-i18n="features.card1.title">Профессиональные курсы</h3>
+                    <p data-i18n="features.card1.text">Учитесь у лучших преподавателей и развивайтесь в нужном направлении.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3 data-i18n="features.card2.title">Активное сообщество</h3>
+                    <p data-i18n="features.card2.text">Общайтесь, обменивайтесь знаниями и помогайте друг другу.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-award"></i></div>
+                    <h3 data-i18n="features.card3.title">Геймификация</h3>
+                    <p data-i18n="features.card3.text">Зарабатывайте баллы и достижения, участвуя в активности платформы.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2 data-i18n="cta.title">Присоединяйтесь к нам сегодня!</h2>
+            <p data-i18n="cta.text">Создайте аккаунт и начните изучать то, что действительно важно. Мы сделаем ваше обучение интересным и продуктивным.</p>
+            <a href="register.html" class="btn btn-outline" data-i18n="cta.register">Зарегистрироваться</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 data-i18n="footer.about.title">О Student-Connect</h3>
+                <p data-i18n="footer.about.text">Платформа для студентов и преподавателей, объединяющая обучение и общение.</p>
+            </div>
+            <div class="footer-column">
+                <h3 data-i18n="footer.nav.title">Навигация</h3>
+                <ul class="footer-links">
+                    <li><a href="courses.html" data-i18n="nav.courses">Курсы</a></li>
+                    <li><a href="discussions.html" data-i18n="nav.discussions">Обсуждения</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">О нас</a></li>
+                    <li><a href="contacts.html" data-i18n="nav.contact">Обратная связь</a></li>
+                    <li><a href="team.html" data-i18n="footer.nav.team">Команда</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-i18n="footer.contact.title">Контакты</h3>
+                <p>Email: student-connect.com</p>
+                <p data-i18n="footer.contact.phone">Телефон: +7 123 456 7890</p>
+                <p data-i18n="footer.contact.address">Адрес: Алматы, Казахстан</p>
+            </div>
+            <div class="footer-column">
+                <h3 data-i18n="footer.social.title">Социальные сети</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://youtube.com/" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+     </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Student-Connect. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

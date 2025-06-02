@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>О нас | Student-Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #4A6CF7;
+      --text: #1a1a1a;
+      --bg: #f9f9f9;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* Header */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      padding: 0 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .auth-buttons .login {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .auth-buttons .login:hover {
+      background: rgba(74, 108, 247, 0.1);
+    }
+
+    .auth-buttons .register {
+      background: var(--primary);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .auth-buttons .register:hover {
+      background: #3a5be0;
+    }
+
+    /* Content */
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin: 20px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+      animation-delay: 0.3s;
+    }
+
+    /* Анимация появления */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Секция команды */
+    .team {
+      margin-top: 60px;
+    }
+
+    .team h2 {
+      animation-delay: 0.6s;
+    }
+
+    .team-members {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .member {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 20px;
+      width: 180px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    .member:nth-child(1) {
+      animation-delay: 0.8s;
+    }
+
+    .member:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    .member:nth-child(3) {
+      animation-delay: 1.2s;
+    }
+
+    .member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(74,108,247,0.3);
+    }
+
+    .member h3 {
+      margin: 0 0 6px 0;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .member p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: white;
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 600px) {
+      .team-members {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">Student-Connect</div>
+      <nav class="nav-links">
+        <a href="index.html"><i class="fas fa-home"></i> Главная</a>
+        <a href="courses.html"><i class="fas fa-book"></i> Курсы</a>
+        <a href="discussions.html"><i class="fas fa-comments"></i> Обсуждения</a>
+        <a href="about.html" class="active"><i class="fas fa-file-alt"></i> О нас</a>
+        <a href="contact.html"><i class="fas fa-user"></i> Контакты</a>
+      </nav>
+      <div class="auth-buttons">
+        <a href="login.html" class="login">Войти</a>
+        <a href="register.html" class="register">Регистрация</a>
+      </div>
+    </div>
+  </header>
+  <!-- Контент страницы -->
+  <div class="container">
+    <h2>Кто мы?</h2>
+    <p>
+      Student-Connect — это образовательная платформа и сообщество, где студенты, преподаватели и эксперты могут объединяться, чтобы делиться знаниями, опытом и вдохновением.
+    </p>
+    <h2>Наша миссия</h2>
+    <p>
+      Создавать дружелюбную, современную и функциональную платформу для обучения и общения, где каждый может раскрыть свой потенциал и найти единомышленников.
+    </p>
+
+    <!-- Секция команды -->
+    <section class="team">
+      <h2>Наша команда</h2>
+      <div class="team-members">
+        <div class="member">
+          <img src="photo3.jpg" alt="Мария Иванова" />
+          <h3>Мария Иванова</h3>
+          <p>Основатель проекта</p>
+        </div>
+        <div class="member">
+          <img src="photo1.avif" alt="Алексей Смирнов" />
+          <h3>Алексей Смирнов</h3>
+          <p>Ведущий разработчик</p>
+        </div>
+        <div class="member">
+          <img src="photo4.jpg" alt="Елена Кузнецова" />
+          <h3>Елена Кузнецова</h3>
+          <p>UX/UI дизайнер</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

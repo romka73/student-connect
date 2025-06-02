@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Вход – Student-Connect</title>
+  <link rel="stylesheet" href="login.css" />
+  <style>
+    form div {
+      margin-bottom: 6px; /* уменьшенный отступ между полями */
+    }
+    .error-message {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 2px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container fade-in">
+    <header>
+      <div class="logo">🎓 Student-Connect</div>
+      <nav>
+        <a href="index.html">Главная</a>
+        <a href="register.html" class="highlight">Регистрация</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h1>Добро пожаловать!</h1>
+        <p>Для входа в систему введите ваши данные</p>
+        <form id="loginForm" novalidate>
+          <div>
+            <input type="email" id="email" placeholder="Email" required />
+            <div id="emailError" class="error-message" style="display:none;">Введите корректный email</div>
+          </div>
+          <div>
+            <input type="password" id="password" placeholder="Пароль" required />
+            <div id="passwordError" class="error-message" style="display:none;">Пароль должен быть не менее 8 символов</div>
+          </div>
+          <button type="submit">Войти</button>
+        </form>
+        <p class="bottom-text">Нет аккаунта? <a href="register.html">Зарегистрируйтесь</a></p>
+      </section>
+    </main>
+
+    <footer>
+      © 2025 Student-Connect
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+
+      let valid = true;
+
+      // Проверка email
+      const emailValue = emailInput.value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(emailValue)) {
+        emailError.style.display = 'block';
+        valid = false;
+      } else {
+        emailError.style.display = 'none';
+      }
+
+      // Проверка пароля
+      if (passwordInput.value.length < 8) {
+        passwordError.style.display = 'block';
+        valid = false;
+      } else {
+        passwordError.style.display = 'none';
+      }
+
+      if (valid) {
+        // Если валидация успешна — переходим на главную страницу
+        window.location.href = 'index.html';
+      }
+    });
+
+    <button onclick="loginUser()">Войти</button>
+
+  </script>
+</body>
+</html>

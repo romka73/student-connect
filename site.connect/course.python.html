@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Курс по Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0; padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1abc9c;
+            margin-bottom: 15px;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #1abc9c;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #16a085;
+        }
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        .back:hover {
+            text-decoration: underline;
+        }
+        .reviews {
+            margin-top: 30px;
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .review-item {
+            margin-bottom: 15px;
+        }
+        .review-item strong {
+            color: #1abc9c;
+        }
+        .teacher {
+            margin-top: 30px;
+            padding: 15px;
+            border-left: 5px solid #1abc9c;
+            background: #e0f2f1;
+            border-radius: 5px;
+        }
+        .teacher h3 {
+            margin-top: 0;
+        }
+        .course-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Курс по Python</h1>
+
+        <p>
+            Изучение языка Python — популярного и универсального языка программирования, который применяется в веб-разработке, анализе данных, машинном обучении и автоматизации. 
+            Курс помогает освоить основы программирования, работу с библиотеками и создание практических проектов.
+        </p>
+
+        <h2>Программа курса:</h2>
+        <ul>
+            <li>Введение в Python и установка окружения</li>
+            <li>Основы синтаксиса и структуры программ</li>
+            <li>Работа с переменными, типами данных и операторами</li>
+            <li>Функции и модули</li>
+            <li>Обработка ошибок и исключения</li>
+            <li>Работа с файлами и базами данных</li>
+            <li>Основы объектно-ориентированного программирования</li>
+            <li>Практические проекты и задачи</li>
+        </ul>
+
+        <a href="#" class="button">Записаться на курс</a>
+        <a href="courses.html" class="back">← Вернуться к списку курсов</a>
+
+        <div class="reviews">
+            <h2>Отзывы студентов:</h2>
+            <div class="review-item">
+                <strong>Анна:</strong> "Очень понятный и структурированный курс, помог начать программировать на Python с нуля!"
+            </div>
+            <div class="review-item">
+                <strong>Иван:</strong> "Преподаватель отлично объясняет, материал подается интересно и доступно."
+            </div>
+        </div>
+
+        <div class="teacher">
+            <h3>Преподаватель:</h3>
+            <p>Екатерина Смирнова — опытный разработчик и преподаватель с 7-летним стажем в области Python и Data Science.</p>
+        </div>
+    </div>
+     <div id="notification" style="
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2ecc71;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+">
+    Вы успешно записались на курс, ожидайте обратной связи
+</div>
+
+<script>
+  document.querySelector('.button').addEventListener('click', function (e) {
+    e.preventDefault(); // чтобы не переходил по #
+    const notif = document.getElementById('notification');
+    notif.style.display = 'block';
+    notif.style.opacity = '1';
+
+    setTimeout(() => {
+      notif.style.opacity = '0';
+      setTimeout(() => notif.style.display = 'none', 500);
+    }, 3000); // 3 секунды
+  });
+</script>
+</body>
+</html>

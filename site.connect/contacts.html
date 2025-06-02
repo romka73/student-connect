@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Связаться с нами</title>
+  <link rel="stylesheet" href="contacts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Связаться с нами</h1>
+      <p>Мы рады обратной связи и всегда готовы помочь!</p>
+    </div>
+  </header>
+
+  <div class="notification">
+  Ваше сообщение принято, ожидайте обратной связи
+</div>
+
+
+  <div class="back-button">
+    <a href="index.html">⟵ На главную</a>
+  </div>
+
+  <main class="main">
+    <div class="container">
+      <form class="contact-form" id="contactForm">
+        <label for="name">Ваше имя</label>
+        <input type="text" id="name" placeholder="Введите имя" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Введите email" required>
+
+        <label for="message">Сообщение</label>
+        <textarea id="message" rows="5" placeholder="Введите сообщение..." required></textarea>
+
+        <button type="submit">Отправить сообщение</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Study-Mate. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+const notification = document.querySelector('.notification');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); 
+
+  // Показать уведомление с анимацией
+  notification.classList.add('show');
+
+  form.reset();
+
+  // Скрыть через 5 секунд с плавностью
+  setTimeout(() => {
+    notification.classList.remove('show');
+  }, 5000);
+});
+
+  </script>
+</body>

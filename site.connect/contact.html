@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Название Сайта</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #4e73df;
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+      .home-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: auto; /* отменяет прежнее */
+    background-color: white;
+    color: #4e73df;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+        
+        .home-btn:hover {
+            background-color: #f0f2f5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .home-btn {
+          left: 20px;
+          right: auto;
+        }
+
+        
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: #4e73df;
+            border-bottom: 2px solid #4e73df;
+            padding-bottom: 0.5rem;
+        }
+        
+        .contact-info {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.8rem;
+            margin-right: 1rem;
+            color: #4e73df;
+            width: 50px;
+            height: 50px;
+            background: #e8f0fe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: #2c3e50;
+        }
+        
+        .contact-text p, .contact-text a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: #4e73df;
+        }
+        
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+            margin-right: 0.8rem;
+        }
+        
+        .telegram { color: #0088cc; }
+        .whatsapp { color: #25D366; }
+        .instagram { 
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+           -webkit-text-fill-color: transparent;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .home-btn {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 style="color: white;">Свяжитесь с нами</h1>
+            <p>Мы всегда рады вашим вопросам и предложениям</p>
+
+            <button class="home-btn" onclick="window.location.href='index.html'">
+                <i class=""></i> На главную
+            </button>
+        </div>
+    </header>
+
+
+    
+    <div class="container">
+        <section class="contact-info">
+            <h2>Контактная информация</h2>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-text">
+                    <h3>Электронная почта</h3>
+                    <a href="mailto:info@вашсайт.com">info@вашсайт.com</a>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="contact-text">
+                    <h3>Телефон</h3>
+                    <a href="tel:+71234567890">+7 (123) 456-78-90</a>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-text">
+                    <h3>Адрес</h3>
+                    <p>г. Almaty, ул. Абая, д. 123, офис 111</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="contact-info">
+            <h2>Мы в социальных сетях</h2>
+            <p>Подписывайтесь на нас, чтобы быть в курсе последних новостей</p>
+            
+            <div class="social-links">
+                <a href="https://t.me/ваш_телеграм" class="social-link" target="_blank">
+                    <span class="social-icon telegram"><i class="fab fa-telegram"></i></span>
+                    <span>Telegram</span>
+                </a>
+                
+                <a href="https://wa.me/79123456789" class="social-link" target="_blank">
+                    <span class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></span>
+                    <span>WhatsApp</span>
+                </a>
+                
+                <a href="https://youtube.com" class="social-link" target="_blank">
+                    <span class="social-icon youtube"><i class="fab fa-youtube"></i></span>
+                    <span>YouTube</span>
+                </a>
+            </div>
+        </section>
+        
+        <section class="contact-info">
+            <h2>Режим работы</h2>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="contact-text">
+                    <h3>Часы работы</h3>
+                    <p>Понедельник - Пятница: 9:00 - 18:00</p>
+                    <p>Суббота: 10:00 - 15:00</p>
+                    <p>Воскресенье: выходной</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Название Сайта. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

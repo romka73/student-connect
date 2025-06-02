@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Настройки | Student-Connect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+  <div class="settings-container">
+    <header class="settings-header">
+      <h1>Настройки профиля</h1>
+      <p>Управляйте своим аккаунтом и предпочтениями</p>
+    </header>
+
+    <section class="settings-section">
+      <h2>Основная информация</h2>
+      <div class="setting-item">
+        <label for="username">Имя пользователя</label>
+        <input type="text" id="username" value="Student123" />
+      </div>
+      <div class="setting-item">
+        <label for="email">Электронная почта</label>
+        <input type="email" id="email" value="student@mail.com" />
+      </div>
+      <div class="setting-item">
+        <label for="bio">О себе</label>
+        <textarea id="bio" rows="3">Студент, люблю программировать.</textarea>
+      </div>
+    </section>
+
+    <section class="settings-section">
+      <h2>Уведомления</h2>
+      <div class="setting-switch">
+        <span>Получать email-уведомления</span>
+        <input type="checkbox" id="emailNotify" checked />
+        <label for="emailNotify" class="switch"></label>
+      </div>
+      <div class="setting-switch">
+        <span>Пуш-уведомления</span>
+        <input type="checkbox" id="pushNotify" />
+        <label for="pushNotify" class="switch"></label>
+      </div>
+    </section>
+
+    <section class="settings-section">
+      <h2>Безопасность</h2>
+      <button class="settings-btn danger">Сменить пароль</button>
+      <button class="settings-btn danger">Удалить аккаунт</button>
+    </section>
+
+    <div class="settings-footer">
+      <button class="settings-btn save">Сохранить изменения</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой профиль | Student-Connect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+        --primary: #4361ee;
+        --secondary: #3f37c9;
+        --accent: #4895ef;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --success: #4cc9f0;
+        --warning: #f72585;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f5f7fa;
+        color: var(--dark);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Header Styles */
+    header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    /* Основные стили страницы профиля */
+    .profile-page {
+        padding: 40px 0;
+        min-height: calc(100vh - 150px);
+    }
+
+    .profile-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .avatar-container {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .avatar-upload {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: var(--primary);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .avatar-upload input {
+        display: none;
+    }
+
+    .profile-name {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+        color: var(--primary);
+    }
+
+    .profile-email {
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    .profile-stats {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .profile-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    @media (min-width: 992px) {
+        .profile-content {
+            grid-template-columns: 300px 1fr;
+        }
+    }
+
+    .profile-sidebar {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        height: fit-content;
+    }
+
+    .profile-main {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: var(--primary);
+        padding-bottom: 10px;
+        border-bottom: 2px solid #eee;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #555;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary);
+        outline: none;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 25px;
+        border-radius: 6px;
+        font-weight: 600;
+        background: var(--primary);
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .btn:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+    }
+
+    .btn-block {
+        display: block;
+        width: 100%;
+    }
+
+    .edit-toggle {
+        background: #f0f0f0;
+        color: #555;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s;
+    }
+
+    .edit-toggle:hover {
+        background: #e0e0e0;
+    }
+
+    .nav-menu {
+        list-style: none;
+    }
+
+    .nav-menu li {
+        margin-bottom: 10px;
+    }
+
+    .nav-menu a {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        color: #555;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: all 0.3s;
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+        background: #f0f5ff;
+        color: var(--primary);
+    }
+
+    .nav-menu a i {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+    }
+
+    /* Стили для контентных секций */
+    .content-section {
+        display: none;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        margin-top: 20px;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-section.active {
+        display: block;
+    }
+
+    /* Footer Styles */
+    footer {
+        background-color: #1a1a1a;
+        color: #fff;
+        padding: 40px 0 20px;
+        margin-top: 40px;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .profile-stats {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><i class="fas fa-graduation-cap"></i>Student-Connect</a>
+           </nav>
+        </div>
+    </header>
+
+    <div class="profile-page">
+        <div class="container">
+            <div class="profile-header">
+                <div class="avatar-container">
+                    <img src="https://images.icon-icons.com/1812/PNG/512/4213460-account-avatar-head-person-profile-user_115386.png" alt="Аватар" class="avatar" id="user-avatar">
+                    <label class="avatar-upload">
+                        <i class="fas fa-camera"></i>
+                        <input type="file" id="avatar-input" accept="image/*">
+                    </label>
+                </div>
+                <h1 class="profile-name" id="profile-name">Иван Иванов</h1>
+                <p class="profile-email" id="profile-email">ivan@example.com</p>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Курса</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">356</div>
+                        <div class="stat-label">Часов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Друзей</div>
+                    </div>
+                </div>
+                <button class="btn" id="edit-profile-btn">Редактировать профиль</button>
+            </div>
+
+            <div class="profile-content">
+                <aside class="profile-sidebar">
+                    <ul class="nav-menu">
+                        <li><a href="#" class="active" data-section="profile"><i class="fas fa-user"></i> Мой профиль</a></li>
+                        <li><a href="#" data-section="courses"><i class="fas fa-book"></i> Мои курсы</a></li>
+                        <li><a href="#" data-section="achievements"><i class="fas fa-certificate"></i> Достижения</a></li>
+                        <li><a href="#" data-section="settings"><i class="fas fa-cog"></i> Настройки</a></li>
+                        <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Выйти</a></li>
+                    </ul>
+                </aside>
+
+                <main class="profile-main">
+                    <div id="profile-section" class="content-section active">
+                        <h2 class="section-title">Основная информация</h2>
+                        <form id="profile-form">
+                            <div class="form-group">
+                                <label for="fullname">Полное имя</label>
+                                <input type="text" id="fullname" class="form-control" value="Иван Иванов" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" value="ivan@example.com" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthdate">Дата рождения</label>
+                                <input type="date" id="birthdate" class="form-control" value="1995-05-15" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="university">Университет</label>
+                                <input type="text" id="university" class="form-control" value="Казахский национальный университет" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="faculty">Факультет</label>
+                                <input type="text" id="faculty" class="form-control" value="Компьютерные науки" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="bio">О себе</label>
+                                <textarea id="bio" class="form-control" rows="4" disabled>Учусь на 3 курсе, увлекаюсь программированием и дизайном.</textarea>
+                            </div>
+                            <button type="button" class="btn btn-block" id="save-changes-btn" style="display: none;">Сохранить изменения</button>
+                        </form>
+                    </div>
+
+                    <div id="courses-section" class="content-section">
+                        <h2 class="section-title">Мои курсы</h2>
+                        <div class="course-list">
+                            <div class="course-item">
+                                <h3>Введение в программирование</h3>
+                                <p>Статус: Завершен</p>
+                                <p>Оценка: 5.0</p>
+                            </div>
+                            <div class="course-item">
+                                <h3>Веб-разработка</h3>
+                                <p>Статус: В процессе</p>
+                                <p>Прогресс: 65%</p>
+                            </div>
+                            <div class="course-item">
+                                <h3>Дизайн интерфейсов</h3>
+                                <p>Статус: Запланирован</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="achievements-section" class="content-section">
+                        <h2 class="section-title">Мои достижения</h2>
+                        <div class="achievements-grid">
+                            <div class="achievement-item">
+                                <i class="fas fa-trophy" style="color: gold; font-size: 2rem;"></i>
+                                <h3>Лучший студент месяца</h3>
+                                <p>Октябрь 2024</p>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-medal" style="color: silver; font-size: 2rem;"></i>
+                                <h3>Победитель Русский медвежонок</h3>
+                                <p>Май 2024</p>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-certificate" style="color: #4361ee; font-size: 2rem;"></i>
+                                <h3>Сертификат HTML/CSS</h3>
+                                <p>Январь 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="settings-section" class="content-section">
+                        <h2 class="section-title">Настройки профиля</h2>
+                        <form id="settings-form">
+                            <div class="form-group">
+                                <label>Уведомления</label>
+                                <div>
+                                    <input type="checkbox" id="email-notifications" checked>
+                                    <label for="email-notifications">Email-уведомления</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="push-notifications" checked>
+                                    <label for="push-notifications">Push-уведомления</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="theme">Тема оформления</label>
+                                <select id="theme" class="form-control">
+                                    <option value="light">Светлая</option>
+                                    <option value="dark">Темная</option>
+                                    <option value="system">Как в системе</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="language">Язык</label>
+                                <select id="language" class="form-control">
+                                    <option value="ru">Русский</option>
+                                    <option value="en">English</option>
+                                    <option value="kz">Қазақша</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-block" id="save-settings-btn">Сохранить настройки</button>
+                        </form>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                &copy; 2025 Student-Connect. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const editBtn = document.getElementById('edit-profile-btn');
+        const saveBtn = document.getElementById('save-changes-btn');
+        const formInputs = document.querySelectorAll('#profile-form input, #profile-form textarea');
+        
+        editBtn.addEventListener('click', function() {
+            const isEditing = this.textContent === 'Редактировать профиль';
+            
+            if (isEditing) {
+                this.textContent = 'Отменить';
+                saveBtn.style.display = 'block';
+                formInputs.forEach(input => {
+                    input.disabled = false;
+                    input.style.backgroundColor = '#fff9f9';
+                });
+            } else {
+                this.textContent = 'Редактировать профиль';
+                saveBtn.style.display = 'none';
+                formInputs.forEach(input => {
+                    input.disabled = true;
+                    input.style.backgroundColor = '';
+                });
+            }
+        });
+            saveBtn.addEventListener('click', function() {
+            alert('Изменения сохранены!');
+            document.getElementById('profile-name').textContent = document.getElementById('fullname').value;
+            editBtn.textContent = 'Редактировать профиль';
+            saveBtn.style.display = 'none';
+            formInputs.forEach(input => {
+                input.disabled = true;
+                input.style.backgroundColor = '';
+            });
+        });
+        const avatarInput = document.getElementById('avatar-input');
+        const userAvatar = document.getElementById('user-avatar');
+        
+        avatarInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    userAvatar.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        document.querySelector('a.logout').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm("Вы действительно хотите выйти?")) {
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = "login.html";
+            }
+        });
+        const navLinks = document.querySelectorAll('.nav-menu a[data-section]');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                contentSections.forEach(section => section.classList.remove('active'))
+                this.classList.add('active');
+                const sectionId = this.getAttribute('data-section') + '-section';
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+        document.getElementById('save-settings-btn').addEventListener('click', function() {
+            alert('Настройки сохранены!');
+            const theme = document.getElementById('theme').value;
+            localStorage.setItem('theme', theme);
+            if (theme === 'dark') {
+                document.body.style.backgroundColor = '#1a1a1a';
+                document.body.style.color = '#fff';
+            } else {
+                document.body.style.backgroundColor = '#f5f7fa';
+                document.body.style.color = '#212529';
+            }
+        });
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.getElementById('theme').value = savedTheme;
+            }
+        });
+    </script>
+</body>
+</html>

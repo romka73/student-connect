@@ -1,0 +1,170 @@
+/* Общие стили */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f6f9;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Шапка */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 16px 32px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+.profile-card {
+  max-width: 900px;
+  background: #fff;
+  margin: 40px auto;
+  padding: 32px;
+  border-radius: 16px;
+  display: flex;
+  gap: 40px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+}
+
+.avatar-section {
+  flex: 1 1 200px;
+  text-align: center;
+}
+
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid #007bff;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+.edit-avatar {
+  margin-top: 12px;
+  padding: 8px 16px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.edit-avatar:hover {
+  background: #0056b3;
+}
+
+.info-section {
+  flex: 2 1 400px;
+}
+
+.info-section h1 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.info-section p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.interests h3 {
+  margin-bottom: 8px;
+}
+
+.interests ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.interests li {
+  background: #e9f1ff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.save-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.save-button:hover {
+  background: #218838;
+}
+
+.editable {
+  border: 1px dashed transparent;
+  padding: 4px;
+  border-radius: 6px;
+  transition: border 0.3s;
+}
+
+.editable:focus {
+  border: 1px dashed #007bff;
+  outline: none;
+}
+
+footer {
+  margin-top: auto;
+  padding: 16px;
+  background: #fff;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  border-top: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-section {
+    text-align: center;
+  }
+
+  .info-section ul {
+    text-align: center;
+  }
+}
